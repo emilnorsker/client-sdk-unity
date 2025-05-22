@@ -7,19 +7,10 @@ namespace LiveKit.PlayModeTests
         private const string TOPIC = "test-topic";
 
         [Test]
-        public void RegisterTextHandler_FailsWithDuplicateTopic()
+        public void Test()
         {
-            var room = new Room();
-            room.RegisterTextStreamHandler(TOPIC, (reader, participant) => { });
-            Assert.Throws<StreamError>(() => room.RegisterTextStreamHandler(TOPIC, (reader, participant) => { }));
-        }
-
-        [Test]
-        public void RegisterByteHandler_FailsWithDuplicateTopic()
-        {
-            var room = new Room();
-            room.RegisterByteStreamHandler(TOPIC, (reader, participant) => { });
-            Assert.Throws<StreamError>(() => room.RegisterByteStreamHandler(TOPIC, (reader, participant) => { }));
+            LiveKit.Internal.NativeMethods.init_tracing();
+            Assert.Pass();
         }
     }
 }

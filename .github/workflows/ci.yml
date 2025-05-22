@@ -23,6 +23,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+
+      - name: "Install distro dependencies"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libclang-dev cmake libshaderc-dev libvulkan-dev glslc
+      
       # Required when using package mode, see open issue:
       # https://github.com/game-ci/unity-test-runner/issues/223
       - name: Move Into Subdirectory
